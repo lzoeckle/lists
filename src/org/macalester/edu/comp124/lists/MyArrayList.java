@@ -55,7 +55,7 @@ public class MyArrayList<E> {
 	}
 	
 	/**
-	 * Adds a new element to the end of the array:
+	 * Adds a new element to the end of the list:
 	 * 
 	 * If the array is full, expand the array.
 	 * Add the element to the first unused position in the array.
@@ -64,7 +64,14 @@ public class MyArrayList<E> {
 	 * @param elem
 	 */
 	public void add(E elem) {
-	}
+        if (currentSize == elements.length - 1) {
+            expandSize();
+            add(elem);
+        } else {
+            elements[currentSize] = elem;
+            currentSize++;
+        }
+    }
 
 	/**
 	 * Adds a new element to the end of the array:
@@ -88,7 +95,9 @@ public class MyArrayList<E> {
 	 * This will be useful for both versions of add.
 	 */
 	private void expandSize() {
-		
+        E bigger[] = newArrayOfE(2*currentSize);
+        System.arraycopy(elements,0,bigger,0,elements.length);
+        elements = bigger;
 	}
 	
 	/**
