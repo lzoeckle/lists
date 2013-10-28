@@ -64,7 +64,7 @@ public class MyArrayList<E> {
 	 * @param elem
 	 */
 	public void add(E elem) {
-        if (currentSize == elements.length - 1) {
+        if (currentSize == elements.length) {
             expandSize();
             add(elem);
         } else {
@@ -85,6 +85,18 @@ public class MyArrayList<E> {
 	 * @param elem
 	 */
 	public void add(int index, E elem) {
+        if(elements[index] == null){
+            elements[index] = elem;
+        } else if (currentSize == elements.length) {
+            expandSize();
+            E slide[] = newArrayOfE(elements.length);
+            System.arraycopy(elements, index, slide, index + 1, (elements.length - currentSize));
+            elements = slide;
+        } else {
+            E slide[] = newArrayOfE(elements.length);
+            System.arraycopy(elements, index, slide, index + 1, (elements.length - currentSize));
+            elements = slide;
+        }
 	}
 	
 	/**
