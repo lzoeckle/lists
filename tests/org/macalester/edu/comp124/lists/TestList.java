@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class TestList {
 	/* Declare a list of Strings here named list */
-	MyLinkedList<String> list = new MyLinkedList<String>();	
+	MyLinkedList<String> list = new MyLinkedList<String>();
 
 	public void prepareList() {
 		list.clear();
