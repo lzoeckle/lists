@@ -12,6 +12,8 @@ public class MyLinkedList<E> {
 	private MyLinkedNode<E> head;
 	private MyLinkedNode<E> tail;
 	private int numElements = 0;
+    E nodeVal = null;
+    E nextVal = null;
 	
 	public MyLinkedList() {
 		head = new MyLinkedNode<E>(null);
@@ -20,7 +22,12 @@ public class MyLinkedList<E> {
 	}
 	
 	public E get(int i) {
-		return null;
+        MyLinkedNode<E> currentNode = head;
+        for(int n = 0; n < i + 2; n++){
+            nodeVal = currentNode.getValue();
+            currentNode = currentNode.getNext();
+        }
+		return nodeVal;
 	}
 	
 	public void add(E s) {
@@ -35,6 +42,20 @@ public class MyLinkedList<E> {
 	}
 	
 	public void add(int i, E s) {
+        MyLinkedNode<E> addNode = new MyLinkedNode<E>(s);
+        MyLinkedNode<E> currentNode = head;
+        for(int n = 0; n < i; n++){
+            currentNode = currentNode.getNext();
+        }
+        addNode.setPrev(currentNode);
+        MyLinkedNode<E> currentNode1 = head;
+        for(int n = 0; n < i + 1; n++){
+            currentNode1 = currentNode1.getNext();
+        }
+        addNode.setNext(currentNode1);
+        addNode.getPrev().setNext(addNode);
+        addNode.getNext().setPrev(addNode);
+        numElements++;
 	}
 	
 	public int size() {
